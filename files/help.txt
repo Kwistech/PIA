@@ -1,0 +1,22 @@
+PIA - (Produce Inventory Assistant) v.1.0 - Johnathon Kwisses (Kwistech)
+
+Program written in Python 3 that assists in Produce inventory management.
+
+Menu Commands:
+==============
+
+Cmd                     Description
+-----------------------------------
+'help'                  Lists all of PIA's available functions
+'pia'                   Brings up PIA metadata information
+'init'                  Initializes produce database items (Only use on first use!)
+'info name'             Uses Produces' name to look-up its current in-store information
+'info code'             Uses Produces' code to look-up its current in-store information
+'list'                  Lists all available Produce and its in-store information
+'in'                    Adds stock to the stores' Produce inventory
+'out'                   Subtracts from the stores' Produce inventory
+'price'                 Changes the price on stores' Produce inventory
+'add item'              Adds a new Produce item to Produce inventory
+'del item'              Deletes a Produce item from Produce inventory
+'order'                 Creates an order of Produce and provides stock and total price of order
+'quit'                  Exits PIA
