@@ -49,7 +49,7 @@ def main():
             functions.order_in(conn)
         elif cmd == "order out":
             functions.order_out(conn)
-        elif cmd == "delete order":
+        elif cmd == "del order":
             functions.drop_table_orders(conn)
 
         conn.commit()
