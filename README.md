@@ -8,6 +8,8 @@ grocery stores manage their in-store Produce inventory and information.
 PIA is recommended for grocery store owners who want a fast and simple alternative to other inventory management
 programs.
 
+Check the project's [Wiki](https://github.com/Kwistech/PIA/wiki) for more info.
+
 ##Installation
 
 This program is not installed. It is run from the command line.
