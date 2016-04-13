@@ -41,8 +41,14 @@ def main():
         elif cmd == "del item":
             functions.del_produce_item(conn)
 
-        elif cmd == "order":
-            functions.produce_order(conn)
+        elif cmd == "create order":
+            functions.create_order(conn)
+        elif cmd == "display order":
+            functions.display_order(conn)
+        elif cmd == "order in":
+            functions.order_in(conn)
+        elif cmd == "order out":
+            functions.order_out(conn)
 
         # conn.commit()
 
