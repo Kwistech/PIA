@@ -19,7 +19,7 @@ Cmd                     Description
 'add item'              Adds a new Produce item to Produce inventory
 'del item'              Deletes a Produce item from Produce inventory
 'create order'          Creates an order of Produce and provides stock and total price of order
-'display order'         Displays items in ordered Produce
+'list order'            Lists all items in ordered Produce
 'order in'              Inputs order into Produce database; provides total value of produce
 'order out'             Outputs order from Produce database; provides total value of produce
 'quit'                  Exits PIA
