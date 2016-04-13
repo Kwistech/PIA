@@ -1,6 +1,6 @@
 PIA - (Produce Inventory Assistant) v.1.0 - Johnathon Kwisses (Kwistech)
 
-Program written in Python 3 that assists in Produce inventory management.
+Program written in Python 3 that assists with Produce inventory management.
 
 Menu Commands:
 ==============
