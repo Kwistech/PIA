@@ -1,3 +1,5 @@
+# Produce items with their corresponding name, PLU code, stock, and price. All are at their defaults!!!
+
 basil = {"name": "Basil", "code": 4885, "stock": 0, "price": 0}
 green_beans = {"name": "Green Beans", "code": 4066, "stock": 0, "price": 0}
 carrots_bunch = {"name": "Carrots (Bunch)", "code": 4094, "stock": 0, "price": 0}
@@ -82,6 +84,9 @@ common_white_mushrooms = {"name": "Common White Mushrooms", "code": 4085, "stock
 shitake_mushrooms = {"name": "Shitake Mushrooms", "code": 4651, "stock": 0, "price": 0}
 portabella_mushrooms = {"name": "Portabella Mushrooms", "code": 4650, "stock": 0, "price": 0}
 brown_crimini_mushrooms = {"name": "Brown Crimini Mushrooms", "code": 4648, "stock": 0, "price": 0}
+
+
+# Used for easy implementation of item info retrieval
 
 produce = [basil, green_beans, carrots_bunch, fava_beans, garlic, celery, golden_delicious_apples,
            granny_smith_apples, red_grapes_seedless, broccoli, bananas, green_cabbage, cilantro, cauliflower_white,

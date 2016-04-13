@@ -4,10 +4,10 @@ from files import functions
 
 
 def main():
+    """Connects to database and acts as a switch for PIA."""
     conn = functions.connect_db()
-    functions.cursor_db(conn)
     functions.create_table_produce(conn)
-    functions.create_table_order(conn)
+    functions.create_table_orders(conn)
 
     while True:
         functions.menu()
@@ -43,14 +43,16 @@ def main():
 
         elif cmd == "create order":
             functions.create_order(conn)
-        elif cmd == "display order":
-            functions.display_order(conn)
+        elif cmd == "list order":
+            functions.list_order(conn)
         elif cmd == "order in":
             functions.order_in(conn)
         elif cmd == "order out":
             functions.order_out(conn)
+        elif cmd == "delete order":
+            functions.drop_table_orders(conn)
 
-        # conn.commit()
+        conn.commit()
 
     conn.close()
 
