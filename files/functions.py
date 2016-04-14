@@ -52,7 +52,7 @@ def create_table_produce(conn):
 
     """
     try:
-        sql = 'create table produce (name, code, stock, price)'
+        sql = 'CREATE table produce (name, code, stock, price)'
         conn.execute(sql)
     except sqlite3.OperationalError:
         pass
@@ -66,7 +66,7 @@ def create_table_orders(conn):
 
     """
     try:
-        sql = 'create table orders (name, number, price)'
+        sql = 'CREATE table orders (name, number, price)'
         conn.execute(sql)
     except sqlite3.OperationalError:
         pass
@@ -94,7 +94,7 @@ def init_produce(conn):
             stock = int(item["stock"])
             price = float(item["price"])
 
-            sql = 'insert into produce (name, code, stock, price) values ("{0}", "{1}", "{2}", "{3}")'
+            sql = 'INSERT into produce (name, code, stock, price) values ("{0}", "{1}", "{2}", "{3}")'
             sql = sql.format(name, code, stock, price)
             conn.execute(sql)
         print("\nSuccessfully initiated Produce database!")
@@ -111,7 +111,7 @@ def get_produce(conn, name):
         list: Contains all results of search.
 
     """
-    sql = 'select * from produce where name="{0}"'.format(name.title())
+    sql = 'SELECT * FROM produce WHERE name="{0}"'.format(name.title())
     results = conn.execute(sql)
     produce = results.fetchall()
     return produce
@@ -145,7 +145,7 @@ def item_info_code(conn):
     """
     code = input("Code for Produce: ")
 
-    sql = 'select * from produce where code="{0}"'.format(code)
+    sql = 'SELECT * FROM produce WHERE code="{0}"'.format(code)
     result = conn.execute(sql)
     produce = result.fetchall()
 
@@ -165,7 +165,7 @@ def list_produce(conn):
         conn (sqlite3.Connection): Connection to produce.db database file.
 
     """
-    sql = 'select * from produce'
+    sql = 'SELECT * FROM produce'
     results = conn.execute(sql)
     produce = results.fetchall()
 
@@ -197,7 +197,7 @@ def add_produce_stock(conn, name="", number=0):
 
         for item in produce:
             total = number + int(item[2])
-            sql = 'update produce set stock="{0}" where name="{1}" and stock="{2}"'
+            sql = 'UPDATE produce SET stock="{0}" WHERE name="{1}" AND stock="{2}"'
             sql = sql.format(total, name.title(), item[2])
             conn.execute(sql)
             print("\nAdded {0} to {1} stock!".format(number, name))
@@ -231,7 +231,7 @@ def sub_produce_stock(conn, name="", number=0):
 
         for item in produce:
             total = int(item[2]) - number
-            sql = 'update produce set stock="{0}" where name="{1}" and stock="{2}"'
+            sql = 'UPDATE produce SET stock="{0}" WHERE name="{1}" AND stock="{2}"'
             sql = sql.format(total, name.title(), item[2])
             conn.execute(sql)
             print("\nSubtracted {0} from {1} stock!".format(number, name))
@@ -257,7 +257,7 @@ def change_produce_price(conn):
         produce = get_produce(conn, name)
 
         for item in produce:
-            sql = 'update produce set price="{0}" where name="{1}" and price="{2}"'
+            sql = 'UPDATE produce SET price="{0}" WHERE name="{1}" AND price="{2}"'
             sql = sql.format(number, name.title(), item[3])
             conn.execute(sql)
             print("\nUpdated price of {0} to ${1}".format(name, number))
@@ -283,7 +283,7 @@ def add_produce_item(conn):
         stock = int(input("Number of stock for {}: ".format(name)))
         price = round(float(input("Price for {}".format(name))), 2)
 
-        sql = 'insert into produce (name, code, stock, price) values ("{0}", "{1}", "{2}", "{3}")'
+        sql = 'INSERT INTO produce (name, code, stock, price) values ("{0}", "{1}", "{2}", "{3}")'
         sql = sql.format(name, code, stock, price)
         conn.execute(sql)
         print("\nAdded {0} to produce database!".format(name))
@@ -304,7 +304,7 @@ def del_produce_item(conn):
     try:
         name = input("Name of Produce [eg. Carrots (Bunch)]: ")
 
-        sql = 'delete from produce where name="{}"'.format(name.title())
+        sql = 'DELETE FROM produce WHERE name="{}"'.format(name.title())
         conn.execute(sql)
         print("\nDeleted {} from produce database!".format(name))
     except ValueError:
@@ -330,7 +330,7 @@ def create_order(conn):
         number = int(input("Number of {}: ".format(name)))
         price = 0.0
 
-        sql = 'select * from produce where name="{}"'.format(name.title())
+        sql = 'SELECT * FROM produce WHERE name="{}"'.format(name.title())
         result = conn.execute(sql)
         produce = result.fetchall()
 
@@ -338,7 +338,7 @@ def create_order(conn):
             name = item[0]
             price = float(item[3])
 
-        sql = 'insert into orders (name, number, price) values ("{0}", "{1}", "{2}")'
+        sql = 'INSERT INTO orders (name, number, price) values ("{0}", "{1}", "{2}")'
         sql = sql.format(name, number, price)
         conn.execute(sql)
     except ValueError:
@@ -358,7 +358,7 @@ def list_order(conn):
 
     """
     try:
-        sql = 'select * from orders'
+        sql = 'SELECT * FROM orders'
         result = conn.execute(sql)
         produce = result.fetchall()
 
@@ -381,7 +381,7 @@ def order_in(conn):
     total = 0.0
 
     try:
-        sql = 'select * from orders'
+        sql = 'SELECT * FROM orders'
         result = conn.execute(sql)
         order = result.fetchall()
 
@@ -408,7 +408,7 @@ def order_out(conn):
     total = 0.0
 
     try:
-        sql = 'select * from orders'
+        sql = 'SELECT * FROM orders'
         result = conn.execute(sql)
         order = result.fetchall()
 
@@ -428,6 +428,6 @@ def drop_table_orders(conn):
         conn (sqlite3.Connection): Connection to produce.db database file.
 
     """
-    sql = 'drop table orders'
+    sql = 'DROP table orders'
     conn.execute(sql)
     print("\nDeleted order!")
