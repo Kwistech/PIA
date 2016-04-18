@@ -4,7 +4,7 @@ from files import functions
 
 
 def main():
-    """Connects to database and acts as a switch for PIA."""
+    """Connects to database; acts as a switch for PIA."""
     conn = functions.connect_db()
     functions.create_table_produce(conn)
     functions.create_table_orders(conn)
@@ -21,26 +21,22 @@ def main():
             functions.pia()
         elif cmd == "init":
             functions.init_produce(conn)
-
         elif cmd == "info name":
             functions.item_info_name(conn)
         elif cmd == "info code":
             functions.item_info_code(conn)
         elif cmd == "list":
             functions.list_produce(conn)
-
         elif cmd == "in":
             functions.add_produce_stock(conn)
         elif cmd == "out":
             functions.sub_produce_stock(conn)
         elif cmd == "price":
             functions.change_produce_price(conn)
-
         elif cmd == "add item":
             functions.add_produce_item(conn)
         elif cmd == "del item":
             functions.del_produce_item(conn)
-
         elif cmd == "create order":
             functions.create_order(conn)
         elif cmd == "list order":

@@ -45,7 +45,7 @@ def connect_db():
 
 
 def create_table_produce(conn):
-    """Attempts to create table 'produce' in produce.db file if not already created.
+    """Attempts to create table 'produce' in produce.db file.
 
     Raises:
         sqlite3.OperationalError: If table 'produce' already created; pass.
@@ -59,7 +59,7 @@ def create_table_produce(conn):
 
 
 def create_table_orders(conn):
-    """Attempts to create table 'orders' in produce.db file if not already created.
+    """Attempts to create table 'orders' in produce.db file.
 
     Raises:
         sqlite3.OperationalError: If table 'orders' already created; pass.
@@ -75,10 +75,11 @@ def create_table_orders(conn):
 # CMD FUNCTIONS
 
 def init_produce(conn):
-    """Inserts all of the Produce items in plu_produce.py into the produce.db file.
+    """Inserts all Produce items in plu_produce.py into the produce.db file.
 
-    All of the items are set to their defaults and so this function should only be called upon the first run and to
-    restore item properties to their default values.
+    All of the items are set to their defaults and so this function should only
+    be called upon the first run and to restore item properties to their
+    default values.
 
     Args:
         conn (sqlite3.Connection): Connection to produce.db database file.
@@ -94,7 +95,8 @@ def init_produce(conn):
             stock = int(item["stock"])
             price = float(item["price"])
 
-            sql = 'INSERT into produce (name, code, stock, price) values ("{0}", "{1}", "{2}", "{3}")'
+            sql = 'INSERT into produce (name, code, stock, price) ' \
+                  'values ("{0}", "{1}", "{2}", "{3}")'
             sql = sql.format(name, code, stock, price)
             conn.execute(sql)
         print("\nSuccessfully initiated Produce database!")
@@ -118,7 +120,7 @@ def get_produce(conn, name):
 
 
 def item_info_name(conn):
-    """Searches database for items information and displays it; search is done by name.
+    """Searches database for items information and displays it; search by name.
 
     Args:
         conn (sqlite3.Connection): Connection to produce.db database file.
@@ -137,7 +139,7 @@ def item_info_name(conn):
 
 
 def item_info_code(conn):
-    """Searches database for items information and displays it; search is done by code.
+    """Searches database for items information and displays it; search by code.
 
     Args:
         conn (sqlite3.Connection): Connection to produce.db database file.
@@ -176,7 +178,8 @@ def list_produce(conn):
 def add_produce_stock(conn, name="", number=0):
     """Adds stock to an item in the database.
 
-    Function can be called from order_in(conn) to add items in the order to the database.
+    Function can be called from order_in(conn) to add items in the order to the
+    database.
 
     Args:
         conn (sqlite3.Connection): Connection to produce.db database file.
@@ -197,7 +200,8 @@ def add_produce_stock(conn, name="", number=0):
 
         for item in produce:
             total = number + int(item[2])
-            sql = 'UPDATE produce SET stock="{0}" WHERE name="{1}" AND stock="{2}"'
+            sql = 'UPDATE produce SET stock="{0}" ' \
+                  'WHERE name="{1}" AND stock="{2}"'
             sql = sql.format(total, name.title(), item[2])
             conn.execute(sql)
             print("\nAdded {0} to {1} stock!".format(number, name))
@@ -210,7 +214,8 @@ def add_produce_stock(conn, name="", number=0):
 def sub_produce_stock(conn, name="", number=0):
     """Subtracts stock from an item in the database.
 
-    Function can be called from order_out(conn) to subtract items in the order from the database.
+    Function can be called from order_out(conn) to subtract items in the order
+    from the database.
 
     Args:
         conn (sqlite3.Connection): Connection to produce.db database file.
@@ -231,7 +236,8 @@ def sub_produce_stock(conn, name="", number=0):
 
         for item in produce:
             total = int(item[2]) - number
-            sql = 'UPDATE produce SET stock="{0}" WHERE name="{1}" AND stock="{2}"'
+            sql = 'UPDATE produce SET stock="{0}" ' \
+                  'WHERE name="{1}" AND stock="{2}"'
             sql = sql.format(total, name.title(), item[2])
             conn.execute(sql)
             print("\nSubtracted {0} from {1} stock!".format(number, name))
@@ -253,11 +259,13 @@ def change_produce_price(conn):
     """
     try:
         name = input("Name of Produce [eg. Carrots (Bunch)]: ")
-        number = round(float(input("Change price of {0} to: ".format(name))), 2)
+        number = float(input("Change price of {0} to: ".format(name)))
+        number = round(number, 2)
         produce = get_produce(conn, name)
 
         for item in produce:
-            sql = 'UPDATE produce SET price="{0}" WHERE name="{1}" AND price="{2}"'
+            sql = 'UPDATE produce SET price="{0}" ' \
+                  'WHERE name="{1}" AND price="{2}"'
             sql = sql.format(number, name.title(), item[3])
             conn.execute(sql)
             print("\nUpdated price of {0} to ${1}".format(name, number))
@@ -274,7 +282,8 @@ def add_produce_item(conn):
         conn (sqlite3.Connection): Connection to produce.db database file.
 
     Raises:
-        ValueError: If 'stock' is not an integer and/or 'price' is not a float (or an integer).
+        ValueError: If 'stock' is not an integer and/or 'price' is not a float
+        (or an integer).
 
     """
     try:
@@ -283,7 +292,8 @@ def add_produce_item(conn):
         stock = int(input("Number of stock for {}: ".format(name)))
         price = round(float(input("Price for {}".format(name))), 2)
 
-        sql = 'INSERT INTO produce (name, code, stock, price) values ("{0}", "{1}", "{2}", "{3}")'
+        sql = 'INSERT INTO produce (name, code, stock, price) ' \
+              'values ("{0}", "{1}", "{2}", "{3}")'
         sql = sql.format(name, code, stock, price)
         conn.execute(sql)
         print("\nAdded {0} to produce database!".format(name))
@@ -338,7 +348,8 @@ def create_order(conn):
             name = item[0]
             price = float(item[3])
 
-        sql = 'INSERT INTO orders (name, number, price) values ("{0}", "{1}", "{2}")'
+        sql = 'INSERT INTO orders (name, number, price) ' \
+              'values ("{0}", "{1}", "{2}")'
         sql = sql.format(name, number, price)
         conn.execute(sql)
     except ValueError:
