@@ -1,6 +1,6 @@
 #Produce Inventory Assistant (PIA) 
 
-Produce Inventory Assistant (PIA) v.1.0
+Produce Inventory Assistant (PIA) v.1.0 (Python 3.5)
 
 Produce Inventory Assistant (PIA) makes inventory management simple! PIA is an easy-to-use program which helps small
 grocery stores manage their in-store Produce inventory and information.
