@@ -1,4 +1,4 @@
-#Produce Inventory Assistant (PIA) 
+# Produce Inventory Assistant (PIA) 
 
 Produce Inventory Assistant (PIA) v.1.0 (Python 3.5)
 
@@ -10,7 +10,7 @@ programs.
 
 Check the project's [Wiki](https://github.com/Kwistech/PIA/wiki) for more info.
 
-##Installation
+## Installation
 
 This program is not installed. It is run from the command line.
 
@@ -20,7 +20,7 @@ From the program's root directory, run the following:
 
 `python main.py`
 
-##Upon First Run##
+## Upon First Run##
 
 The items in the plu_produce.py need to be added to the produce.db database.
 
@@ -37,7 +37,7 @@ Continue [y/n]?: y
 
 **Note: Only do this once as this will add all Produce items to the database with their default values!**
 
-##Features
+## Features
 
 With PIA, one can:
 + Add/Subtract Produce to/from the inventory database
@@ -47,7 +47,7 @@ With PIA, one can:
 + Create an incoming or an outgoing order
 + Change an item's price
 
-##Menu Commands
+## Menu Commands
 
 Below are the basic commands for the program 
 
